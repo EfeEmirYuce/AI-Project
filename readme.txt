@@ -6,8 +6,6 @@ This is a web-based map app that finds the shortest path between two points usin
 - Interactive Leaflet map
 - Click to select start and end points
 - Shows shortest path with distance
-- Uses traffic weights for realism
-- Dijkstra and A* algorithms for comparison
 
 ## How to Use
 1. Open `index.html` in your browser.
