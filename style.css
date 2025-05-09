@@ -1,24 +1,114 @@
 body {
-    margin: 0;
-    font-family: sans-serif;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 24px 0 16px 0;
+  font-size: 2.2rem;
+  color: #2d3a4b;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #e0e7ff;
+}
+
+#map {
+  height: 500px;
+  width: 90vw;
+  max-width: 1000px;
+  margin-bottom: 24px;
+  border: 2px solid #64748b;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(100, 116, 139, 0.10);
+}
+
+#info {
+  width: 90vw;
+  max-width: 1000px;
+  background: #fff;
+  padding: 20px 24px 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(100, 116, 139, 0.08);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#info p {
+  margin: 10px 0;
+  font-size: 1.08rem;
+  color: #334155;
+}
+
+#info strong {
+  color: #1e293b;
+}
+
+#path-nodes {
+  margin: 12px 0 8px 0;
+  font-size: 1.08rem;
+  color: #475569;
+}
+
+#info button,
+#node-management button {
+  margin: 8px 6px;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #b163f1 0%, #f838bf 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.08);
+}
+
+#info button:hover,
+#node-management button:hover {
+  background: linear-gradient(90deg, #818cf8 0%, #0ea5e9 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+#node-management {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+  background: #f1f5f9;
+  border-radius: 0 0 12px 12px;
+}
+
+#node-management h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #334155;
+}
+
+#node-management p {
+  color: #64748b;
+  font-size: 0.97rem;
+}
+
+#loading-indicator {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.15rem;
+  color: #334155;
+  border: 2px solid #6366f1;
+  background: #f1f5f9;
+  box-shadow: 0 2px 16px rgba(100, 116, 139, 0.12);
+}
+
+@media (max-width: 700px) {
+  #map, #info {
+      width: 98vw;
+      max-width: 98vw;
+      padding: 10px;
   }
-  
-  #map {
-    height: 90vh;
-    width: 100%;
+  #info {
+      font-size: 0.98rem;
   }
-  #resetBtn {
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    background-color: #3e8ed0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #resetBtn:hover {
-    background-color: #337ab7;
-  }
-    
+}

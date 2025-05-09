@@ -1,17 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Route Finder</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+ <!-- Mapbox CSS -->
+ <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+   <!-- Mapbox JS -->
+   <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+  <!-- Leaflet Routing Machine -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 </head>
 <body>
-  <h2>Smart Route Finder</h2>
-  <button id="resetBtn">Reset Selection</button>
+
+  <h1>Smart Route Finder</h1>
+
   <div id="map"></div>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <div id="info">
+    <p><strong>Start Node:</strong> <span id="start-node">None</span></p>
+    <p><strong>End Node:</strong> <span id="end-node">None</span></p>
+    <p><strong>Distance:</strong> <span id="distance">0</span></p>
+    <div id="path-nodes"><strong>Path:</strong></div>
+    <label for="mode-select">Choose travel type</label>
+    <select id="mode-select">
+      <option value="car">Car</option>
+      <option value="pedestrian">pedestrian</option>
+      <option value="bicycle">bicycle</option>
+    </select> 
+    <button onclick="resetSelection()">Reset Selection</button>
+  </div>
+
+
   <script src="dijkstra.js"></script>
   <script src="script.js"></script>
 </body>

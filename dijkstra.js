@@ -1,47 +1,46 @@
-function dijkstra(graph, start, end) {
-    const distances = {};
-    const prev = {};
-    const visited = new Set();
-    const pq = new Map();
-  
-    for (let node of graph.nodes) {
-      distances[node] = Infinity;
-      prev[node] = null;
-      pq.set(node, Infinity);
-    }
-  
-    distances[start] = 0;
-    pq.set(start, 0);
-  
-    while (pq.size > 0) {
-      const current = [...pq.entries()].reduce((a, b) => a[1] < b[1] ? a : b)[0];
-      pq.delete(current);
-      visited.add(current);
-  
-      if (current === end) break;
-  
-      for (let neighbor of graph.edges[current]) {
-        if (visited.has(neighbor.node)) continue;
-        const alt = distances[current] + neighbor.weight;
-        if (alt < distances[neighbor.node]) {
-          distances[neighbor.node] = alt;
-          prev[neighbor.node] = current;
-          pq.set(neighbor.node, alt);
-        }
+function dijkstra(graph, startNode, endNode) {
+  const distances = {};
+  const previous = {};
+  const visited = new Set();
+  const queue = [];
+
+  graph.nodes.forEach(node => {
+    distances[node] = Infinity;
+    previous[node] = null;
+  });
+
+  distances[startNode] = 0;
+  queue.push({ node: startNode, distance: 0 });
+
+  while (queue.length > 0) {
+    queue.sort((a, b) => a.distance - b.distance);
+    const { node: currentNode } = queue.shift();
+
+    if (visited.has(currentNode)) continue;
+    visited.add(currentNode);
+
+    if (currentNode === endNode) break;
+
+    const neighbors = graph.edges[currentNode] || [];
+    neighbors.forEach(neighbor => {
+      const alt = distances[currentNode] + neighbor.weight;
+      if (alt < distances[neighbor.node]) {
+        distances[neighbor.node] = alt;
+        previous[neighbor.node] = currentNode;
+        queue.push({ node: neighbor.node, distance: alt });
       }
-    }
-  
-    // Build path
-    const path = [];
-    let u = end;
-    while (u) {
-      path.unshift(u);
-      u = prev[u];
-    }
-  
-    return {
-      path,
-      distance: distances[end]
-    };
+    });
   }
-  
+
+  const path = [];
+  let current = endNode;
+  while (current) {
+    path.unshift(current);
+    current = previous[current];
+  }
+
+  return {
+    path,
+    distance: distances[endNode]
+  };
+}
